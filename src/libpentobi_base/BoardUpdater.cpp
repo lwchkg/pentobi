@@ -48,7 +48,7 @@ void BoardUpdater::update(const Node& node)
         check_setup_property(*i, "A4");
         check_setup_property(*i, "AE");
         ColorMove mv = m_tree.get_move(*i);
-        if (! mv.is_null())
+        if (! mv.is_null() && ! mv.move.is_pass())
         {
             if (m_bd.get_nu_moves() >= Board::max_game_moves)
                 throw Exception("too many moves");
