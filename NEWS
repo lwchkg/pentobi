@@ -1,7 +1,9 @@
 Current development version (bugfix branch for version 1)
 ===========================
 
-* Minor other fixes
+* Bugfix: assertion/crash could occur if a move is generated in a position
+  that was created by playing a long sequence of moves by the same color
+  (using Select Next Color even if the other colors still has moves)
 
 
 Version 1.2 (17 Apr 2012)

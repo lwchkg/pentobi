@@ -179,7 +179,13 @@ Move Player::genmove(Color c)
             max_count = ValueType(minimum * pow(factor_per_level, m_level - 1));
         if (use_weight_max_count)
         {
-            unsigned int player_move = m_bd.get_nu_moves() / Color::range;
+            unsigned int player_move = 0;
+            for (unsigned int i = 0; i < m_bd.get_nu_moves(); ++i)
+            {
+                ColorMove mv = m_bd.get_move(i);
+                if (mv.color == c && ! mv.move.is_pass())
+                    ++player_move;
+            }
             float weight = 1;
             if (variant == game_variant_duo)
                 weight = weight_max_count_duo[player_move];
