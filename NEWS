@@ -2,6 +2,8 @@ Current development version (branch v3-fixes)
 =============================================
 
 * Made the opening book in Classic Two-Player fully work again
+* Made GNOME thumbnailer work if thumbnail directory path contained non-ASCII
+  characters and system locale was not Latin-1
 
 
 Version 3.1 (2 Aug 2012)

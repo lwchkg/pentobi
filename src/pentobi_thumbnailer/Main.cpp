@@ -217,7 +217,7 @@ int mainFunction(int argc, char* argv[])
                                  pointState.get_geometry());
     boardPainter.paintPieces(painter, pointState);
     painter.end();
-    QImageWriter writer(files[1].c_str());
+    QImageWriter writer(QString::fromLocal8Bit(files[1].c_str()));
     writer.setFormat("png");
     if (! writer.write(image))
     {
@@ -233,6 +233,7 @@ int mainFunction(int argc, char* argv[])
 
 int main(int argc, char* argv[])
 {
+    QCoreApplication app(argc, argv);
     try
     {
         return mainFunction(argc, argv);
