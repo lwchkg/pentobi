@@ -242,7 +242,7 @@ MainWindow::MainWindow(const QString& initialFile, const QString& manualDir,
         m_level = 4;
     QString variantString = settings.value("variant", "").toString();
     Variant variant;
-    if (! parse_variant_id(variantString.toStdString(), variant))
+    if (! parse_variant_id(variantString.toLocal8Bit().constData(), variant))
         variant = variant_classic;
     m_game.reset(new Game(variant));
     createActions();
@@ -258,7 +258,8 @@ MainWindow::MainWindow(const QString& initialFile, const QString& manualDir,
     m_buttonFullscreen = new StatusBarButton(m_actionFullscreen);
     statusBar()->addPermanentWidget(m_buttonFullscreen);
     initGame();
-    m_player.reset(new Player(variant, booksDir.toStdString(), memory));
+    m_player.reset(new Player(variant, booksDir.toLocal8Bit().constData(),
+                              memory));
     m_player->set_use_book(! noBook);
     createToolBar();
     connect(&m_genMoveWatcher, SIGNAL(finished()),
@@ -603,7 +604,7 @@ bool MainWindow::checkQuit()
     QSettings settings;
     if (m_file.isEmpty() && ! m_gameFinished && m_game->get_modified())
     {
-        writeGame(getAutoSaveFile().toStdString());
+        writeGame(getAutoSaveFile().toLocal8Bit().constData());
         settings.setValue("autosave_rated", m_isRated);
         if (m_isRated)
             settings.setValue("autosave_rated_color",
@@ -1533,7 +1534,7 @@ void MainWindow::exportAsciiArt()
                                                 tr("Text files (*.txt)"));
     if (file.isEmpty())
         return;
-    ofstream out(file.toStdString().c_str());
+    ofstream out(file.toLocal8Bit().constData());
     const Board& bd = getBoard();
     bd.write(out, false);
     if (! out)

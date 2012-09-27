@@ -2,8 +2,9 @@ Current development version (branch v3-fixes)
 =============================================
 
 * Made the opening book in Classic Two-Player fully work again
-* Made GNOME thumbnailer work if thumbnail directory path contained non-ASCII
-  characters and system locale was not Latin-1
+* Fixed bugs that occured if file names or directories contained non-ASCII
+  characters and system locale was not Latin-1 (e.g. auto save or GNOME
+  thumbnail creation)
 * Replaced the icons with less colorful ones to avoid distraction from the
   colors on the board. All icons are now licensed under the GPLv3+ and
   include SVG sources. No icons from the Tango icon set are used anymore.

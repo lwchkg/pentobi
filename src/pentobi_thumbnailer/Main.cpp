@@ -221,7 +221,7 @@ int mainFunction(int argc, char* argv[])
     writer.setFormat("png");
     if (! writer.write(image))
     {
-        cerr << writer.errorString().toStdString() << '\n';
+        cerr << writer.errorString().toLocal8Bit().constData() << '\n';
         return 1;
     }
     return 0;
