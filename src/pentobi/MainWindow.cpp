@@ -2748,6 +2748,7 @@ void MainWindow::saveAs()
             updateWindow(false);
         }
         setFile(file);
+        rememberFile(file);
     }
 }
 
