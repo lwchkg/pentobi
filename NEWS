@@ -1,7 +1,9 @@
 Current development version (branch v4-fixes)
 =============================================
 
-* Add file to recent menu when saving under a new name.
+* Add file to recent menu when saving under a new name
+* Avoid that autosave file is deleted if it was loaded and then the
+  program was quit without modifying it
 
 
 Version 4.3 (2 Nov 2012)
@@ -17,8 +19,8 @@ Version 4.3 (2 Nov 2012)
 Version 4.2 (7 Oct 2012)
 ========================
 
-* Fixed crash when opening game info dialog in game variants Classic Two-Player
-  or Trigon Two-Player
+* Fixed crash when opening game info dialog in game variants Classic
+  Two-Player or Trigon Two-Player
 
 
 Version 4.1 (5 Oct 2012)

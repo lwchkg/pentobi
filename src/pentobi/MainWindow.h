@@ -537,6 +537,12 @@ private:
 
     QLabel* m_moveNumber;
 
+    /** Is the current game a game loaded from the autosave file?
+        If yes, we need it to save again on quit even if it was not modified.
+        Note that the autosave game is deleted after loading to avoid that
+        it is used twice if two instances of Pentobi are started. */
+    bool m_isAutoSaveLoaded;
+
     GenMoveResult asyncGenMove(Color c, int genMoveId, bool playSingleMove);
 
     bool checkSave();
