@@ -3506,6 +3506,7 @@ void MainWindow::updateWindow(bool currentNodeChanged)
                        && &current.get_parent().get_first_child() != &current);
     m_actionNextVariation->setEnabled(current.get_sibling() != 0);
     m_actionPlay->setEnabled(hasMoves);
+    m_actionPlaySingleMove->setEnabled(hasMoves);
     m_actionPreviousVariation->setEnabled(current.get_previous_sibling() != 0);
     // See also comment in setupMode()
     m_actionSetupMode->setEnabled(! hasParent && ! hasChildren);
