@@ -1,6 +1,7 @@
 Current development version (branch v4-fixes)
 =============================================
 
+* Bugfixes in game analysis that could cause wrong values
 * Add file to recent menu when saving under a new name
 * Avoid that autosave file is deleted if it was loaded and then the
   program was quit without modifying it
