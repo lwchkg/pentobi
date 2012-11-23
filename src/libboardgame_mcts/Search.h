@@ -311,6 +311,13 @@ public:
     /** Get mean evaluation for all players at root node. */
     const array<StatisticsBase<Float>,P>& get_root_val() const;
 
+    /** Get the value of the root position.
+        If the count of the root node is less than the count of the child
+        with the highest count, the value of this child will be returned,
+        otherwise the value of the root node (this can happen because the root
+        values are cleared when reusing a subtree from a previous search). */
+    Float get_value() const;
+
 protected:
     struct Simulation
     {
@@ -778,6 +785,20 @@ Float Search<S,M,P>::get_unexplored_value() const
 }
 
 template<class S, class M, unsigned P>
+Float Search<S,M,P>::get_value() const
+{
+    const Node& root = m_tree.get_root();
+    Float root_count = root.get_count();
+    const Node* child = select_child_final(root);
+    if (child != 0 && child->get_count() > root_count)
+        return child->get_value();
+    else if (root_count > 0)
+        return root.get_value();
+    else
+        return 0.5;
+}
+
+template<class S, class M, unsigned P>
 bool Search<S,M,P>::get_weight_rave_updates() const
 {
     return m_weight_rave_updates;
@@ -871,7 +892,7 @@ void Search<S,M,P>::write_info(ostream& out) const
     out << format(
              "Val: %.2f, Cnt: %.0f, ReuseCnt: %.0f, Sim: %i, Nds: %i, Tm: %s\n"
              "Sim/s: %.0f, Len: %s, Dp: %s\n")
-        % root.get_value() % count % m_reuse_count % m_nu_simulations
+        % get_value() % count % m_reuse_count % m_nu_simulations
         % m_tree.get_nu_nodes() % time_to_string(m_last_time)
         % (double(m_nu_simulations) / m_last_time)
         % m_stat_len.to_string(true, 1, true)
