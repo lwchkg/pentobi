@@ -5,6 +5,8 @@ Current development version (branch v4-fixes)
 * Add file to recent menu when saving under a new name
 * Avoid that autosave file is deleted if it was loaded and then the
   program was quit without modifying it
+* Fixed too many move numbers shown if "Play Single Move" if selected
+  repeatedly and "Move Numbers" was set to "Last"
 
 
 Version 4.3 (2 Nov 2012)

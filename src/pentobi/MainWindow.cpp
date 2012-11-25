@@ -2520,6 +2520,7 @@ void MainWindow::play()
         else
             m_computerColors[m_currentColor] = true;
     }
+    m_lastComputerMovesBegin = 0;
     genMove();
 }
 
@@ -2550,6 +2551,7 @@ void MainWindow::playSingleMove()
 {
     cancelThread();
     leaveSetupMode();
+    m_lastComputerMovesBegin = 0;
     genMove(true);
 }
 
