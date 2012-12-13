@@ -861,7 +861,7 @@ bool BoardConst::find_move(const MovePoints& points, Move& move) const
         Piece piece(i);
         if (get_piece_info(piece).get_size() == points.size())
         {
-            const Board::LocalMovesListRange& moves = get_moves(piece, p);
+            Board::LocalMovesListRange moves = get_moves(piece, p);
             for (auto j = moves.first; j != moves.second; ++j)
                 if (m_move_info[j->to_int()].points == sorted_points)
                 {

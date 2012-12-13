@@ -265,7 +265,7 @@ inline void State::add_moves(Point p, Color c, Piece piece,
                              unsigned adj_status)
 {
     MoveList& moves = m_moves[c];
-    const Board::LocalMovesListRange& move_candidates =
+    Board::LocalMovesListRange move_candidates =
         m_bc->get_moves(piece, p, adj_status);
     for (auto i = move_candidates.first; i != move_candidates.second; ++i)
         if (! m_shared_const.is_forbidden_at_root[c][*i])
