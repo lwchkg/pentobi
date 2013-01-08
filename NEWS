@@ -3,6 +3,8 @@ Current development version (branch v5-fixes)
 
 * Fixed variation labeling if more than 51 variations
 * Minor fixes to the computer player
+* The Windows binary is now compiled for i686 CPUs (Pentium Pro or newer),
+  which speeds up the move generation by ca. 15%
 
 
 Version 5.0 (10 Dec 2012)
