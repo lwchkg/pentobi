@@ -68,7 +68,7 @@ int main(int argc, char** argv)
             ("config,c", value<>(&config_file), "set GTP config file")
             ("color", "colorize text output of boards")
             ("game,g", value<>(&variant_string),
-             "game variant (classic, classic_2, duo, trigon, trigon_2)")
+             "game variant (classic, classic_2, duo, trigon, trigon_2, junior)")
             ("help,h", "print help message and exit")
             ("level,l", value<int>(&level), "set playing strength level")
             ("memory", value<>(&memory), "memory to allocate for search trees")
