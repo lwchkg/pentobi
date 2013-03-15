@@ -1,10 +1,19 @@
+Current development version (branch v6-fixes)
+=============================================
+
+* Fixed some cases where the user had to explicitely press the Play
+  button even if the computer was set to play the current color and
+  there was no reason not to automatically start playing
+
+
 Version 6.0 (4 Mar 2013)
 ========================
 
 * Increased playing strength at higher levels. The search algorithm used
   for move generation is now parallelized and can take advantage of
   multi-core CPUs (up to 4 cores). There is a new playing level 8, which
-  has a 2 GHz dual-core CPU or faster as the recommended system requirement.
+  has a 2 GHz dual-core CPU or faster as the recommended system
+  requirement.
 * New menu item Toolbar Text to configure the toolbar button appearance
   independent of the system settings
 * More SGF game info properties (event, round, time) were added to the
