@@ -1,8 +1,6 @@
 Current development version (branch v6-fixes)
 =============================================
 
-* Fixed the broken estimated time left display during computer move
-  generation that occurred with GCC 4.7.3-1ubuntu1 on Ubuntu 13.04
 * Fixed some cases where the user had to explicitely press the Play
   button even if the computer was set to play the current color and
   there was no reason not to automatically start playing
