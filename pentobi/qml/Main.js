@@ -255,6 +255,8 @@ function genMove() {
 function getFileFromUrl(fileUrl) {
     var file = fileUrl.toString()
     file = file.replace(/^(file:\/{3})/,"/")
+    if (Qt.platform.os == "windows")
+        file = file.replace(/^\/(\w:)/,"$1").replace(/\//g,"\\")
     return decodeURIComponent(file)
 }
 
@@ -788,6 +790,10 @@ function showVariationInfo() {
 }
 
 function showWindow() {
+    if (isAndroid) {
+        show()
+        return
+    }
     width = settings.width
     height = settings.height
     x = settings.x
@@ -795,15 +801,13 @@ function showWindow() {
     show()
     var maxWidth = rootWindow.Screen.desktopAvailableWidth
     var maxHeight = rootWindow.Screen.desktopAvailableHeight
-    if (settings.width <= 0 || settings.height <= 0
-            || settings.x < 0 || settings.y < 0
-            || settings.x + settings.width >= maxWidth
-            || settings.y + settings.height >= maxHeight)
+    if (width < minimumWidth || height < minimumHeight || x < 0 || y < 0
+            || x + width >= maxWidth || y + height >= maxHeight)
     {
-        width = isAndroid ? maxWidth : Math.min(maxWidth, 1164)
-        height = isAndroid ? maxHeight : Math.min(maxHeight, width * 662 / 1164)
-        x = (Screen.width - width) / 2
-        y = (Screen.height - height) / 2
+        width = Math.min(maxWidth, 1164)
+        height = Math.min(maxHeight, width * 662 / 1164)
+        x = (rootWindow.Screen.width - width) / 2
+        y = (rootWindow.Screen.height - height) / 2
     }
 }
 

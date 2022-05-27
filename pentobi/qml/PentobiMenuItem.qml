@@ -38,7 +38,7 @@ MenuItem {
             // palette.midlight looks similar to the one used in style Default,
             // but doesn't work in style Fusion on KDE, so we use
             // palette.highlight there.
-            return globalStyle.toLowerCase() === "fusion" ?
+            return globalStyle === "Fusion" ?
                         palette.highlight : palette.midlight
         }
     }
@@ -50,9 +50,14 @@ MenuItem {
             color: {
                 // See comment at background
                 if (root.highlighted)
-                    return globalStyle.toLowerCase() === "fusion" ?
+                    return globalStyle === "Fusion" ?
                                 palette.highlightedText : palette.buttonText
-                return palette.text
+                if (! root.enabled && globalStyle === "Universal")
+                    // Workaround for bug in Universal style, which sets
+                    // palette.windowText to #000000 for enabled items but to
+                    // #bebebe for disabled items (last tested with Qt 6.2.3)
+                    return menu.palette.windowText
+                return palette.windowText
             }
             verticalAlignment: Text.AlignVCenter
             Layout.fillWidth: true

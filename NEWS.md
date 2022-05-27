@@ -1,8 +1,18 @@
 Pentobi Release Notes
 =====================
 
-Version 21.0-dev (master)
+Version 22.0-dev (master)
 -------------------------
+
+*
+
+Version 21.1-dev (v21-fixes)
+----------------------------
+
+*
+
+Version 21.0 (17 May 2022)
+--------------------------
 
 * New help viewer implementation, which includes DocBook files in the
   resources. This avoids using an external browser, which did not work
@@ -10,10 +20,9 @@ Version 21.0-dev (master)
   and Chromium have restricted access to local files, or using WebView,
   which is not supported on all Linux architectures or in Qt 6.0/6.1.
 * Fixed visibility of labels on Callisto 1x1-piece in dark theme.
-
-Version 20.1-dev (v20-fixes)
-----------------------------
-
+* Fixed rendering issues on Android with Qt 6.3.0.
+* Several fixes to make Pentobi work on Windows
+  (see https://github.com/lwchkg/pentobi/releases)
 * Fixed detection of loaded files or autosaved games modified by
   another application.
 

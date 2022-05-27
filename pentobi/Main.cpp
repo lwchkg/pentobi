@@ -176,16 +176,11 @@ int mainDesktop()
             throw QCoreApplication::translate("main", "Too many arguments");
         if (! args.empty())
             initialFile = args.at(0);
-        auto style = QQuickStyle::name();
-        if (style.isEmpty() && isDesktop)
-        {
-            style = QStringLiteral("Fusion");
-            QQuickStyle::setStyle(style);
-        }
         QQmlApplicationEngine engine;
         engine.addImageProvider(QStringLiteral("pentobi"), new ImageProvider);
         auto ctx = engine.rootContext();
-        ctx->setContextProperty(QStringLiteral("globalStyle"), style);
+        ctx->setContextProperty(QStringLiteral("globalStyle"),
+                                QQuickStyle::name());
         ctx->setContextProperty(QStringLiteral("initialFile"), initialFile);
         ctx->setContextProperty(QStringLiteral("isDesktop"),
                                 QVariant(isDesktop));
@@ -229,6 +224,10 @@ int main(int argc, char *argv[])
     // incorrect canvas painting on low-DPI devices with devicePixelRatio<1
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
                 Qt::HighDpiScaleFactorRoundingPolicy::Round);
+#elif defined(Q_OS_WIN)
+    qputenv("QT_QUICK_CONTROLS_STYLE", "Universal");
+#else
+    qputenv("QT_QUICK_CONTROLS_STYLE", "Fusion");
 #endif
     QCoreApplication::setOrganizationName(QStringLiteral("Pentobi"));
     QCoreApplication::setApplicationName(QStringLiteral("Pentobi"));
